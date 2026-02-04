@@ -11,8 +11,8 @@
                     'list-group-item-danger': respuesta.esCorrecta == 0 && respuestasUsuario[i] == j
                     }">
                     {{ respuesta.nombre }}
-                <span class="badge"><span class="material-symbols-outlined correct" *ngIf="respuesta.esCorrecta == 1 && respuestasUsuario[i] == j">check_circle</span></span>
-                <span class="badge"><span class="material-symbols-outlined incorrect" *ngIf="respuesta.esCorrecta == 0 && respuestasUsuario[i] == j">clear</span></span>
+                <span class="badge"><i class="material-icons correct" *ngIf="respuesta.esCorrecta == 1 && respuestasUsuario[i] == j">check_circle</i></span>
+                <span class="badge"><i class="material-icons incorrect" *ngIf="respuesta.esCorrecta == 0 && respuestasUsuario[i] == j">clear</i></span>
             </li>
         </ng-container>
     </ul>
