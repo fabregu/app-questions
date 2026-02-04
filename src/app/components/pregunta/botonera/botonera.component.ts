@@ -36,6 +36,9 @@ export class BotoneraComponent {
       }
       case 'Finalizar': {
         this.preguntaService.respuestaUsuario.push(this.preguntaService.indexRespuesta);
+        this.preguntaService.opcionSeleccionada == null;
+        this.preguntaService.pregConfirmada == false;
+        this.preguntaService.indexPregunta = 0;
         this.router.navigate(['/respuesta']);
       }
     }
