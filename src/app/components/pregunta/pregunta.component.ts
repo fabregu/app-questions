@@ -25,9 +25,13 @@ export class PreguntaComponent {
     return this.listPreguntas[this.preguntaService.indexPregunta].descripcionPregunta;
   }
 
-  respuestaSeleccionada(respuesta: Respuesta) {
+  respuestaSeleccionada(respuesta: Respuesta, indexRta: number) {
+    if(this.preguntaService.pregConfirmada === true) {
+      return;
+    }
     this.preguntaService.opcionSeleccionada = respuesta;
     this.preguntaService.deshabilitarBoton = false;
+    this.preguntaService.indexRespuesta = indexRta;
   }
 
   addClassOption(respuesta: Respuesta) {

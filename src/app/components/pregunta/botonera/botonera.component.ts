@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PreguntaService } from '../../../services/pregunta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-botonera',
@@ -10,13 +11,32 @@ import { PreguntaService } from '../../../services/pregunta.service';
 })
 export class BotoneraComponent {
   btnString = 'Aceptar';
-  constructor(public preguntaService: PreguntaService) {}
+  constructor(
+    public preguntaService: PreguntaService,
+    private router: Router) {}
 
   siguiente() {
     switch (this.btnString) {
       case 'Aceptar': {
         this.preguntaService.pregConfirmada = true;
         this.btnString = 'Siguiente';
+
+        if(this.preguntaService.preguntas.length -1 === this.preguntaService.indexPregunta) {
+          this.btnString = 'Finalizar';
+        }
+        break;
+      }
+      case 'Siguiente': {
+        this.preguntaService.indexPregunta++;
+        this.preguntaService.respuestaUsuario.push(this.preguntaService.indexRespuesta);
+        this.preguntaService.deshabilitarBoton = true;
+        this.preguntaService.pregConfirmada = false;
+        this.btnString = 'Aceptar';
+        break;
+      }
+      case 'Finalizar': {
+        this.preguntaService.respuestaUsuario.push(this.preguntaService.indexRespuesta);
+        this.router.navigate(['/respuesta']);
       }
     }
   }

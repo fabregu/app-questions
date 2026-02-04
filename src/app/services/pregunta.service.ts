@@ -10,6 +10,8 @@ export class PreguntaService {
   opcionSeleccionada: Respuesta | null = null;
   deshabilitarBoton = true;
   pregConfirmada = false;
+  indexRespuesta: number | null = null;
+  respuestaUsuario: Array<number | null> = [];
 
   public preguntas: any[] = [
     new Pregunta('¿Cuál es la capital de Francia?', [
